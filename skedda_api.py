@@ -2,8 +2,8 @@ import requests
 import json
 
 #Credentails
-userEmail = 'mmehrez@easetechinv.com'
-userPass = 'dyfse6-heQcom-gyrvab'
+userEmail = 'reservations@foraapp.com'
+userPass = 'Fora@pp1245'
 loginUrl = 'https://app.skedda.com/account/login'
 session = requests.session()
 
