@@ -67,6 +67,7 @@ def fetchBooking(timeEndFrom,dateEndFrom,timeStartTo,dateStartTo,subDomainData):
     fetchHeaders = subDomainData['fetchHeaders']
     fetchCookies = subDomainData['fetchCookies']
     fetchResults = session.get(fetchUrl, headers=fetchHeaders, cookies=fetchCookies)
+    print(fetchResults)
     if fetchResults.status_code == 200:
         return fetchResults.text
     else:
