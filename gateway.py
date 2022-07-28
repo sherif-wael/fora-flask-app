@@ -85,7 +85,18 @@ def cancel():
 
 @app.route("/fetch",methods = ['POST','GET'])
 def fetch():
-    apiData = ['Ghazala bay 2','Grand Plaza blue court','Beverly Red Court','Beverly Super Panoramic','Maadi Court 1','Maadi Court 2']
+    apiData = [
+        'Grand Plaza blue court',
+        'Grand Plaza GreenSuperCourt',
+        'Beverly Red Court',
+        'Beverly Super Panoramic',
+        'Beverly Blue Court',
+        'ELSEGINY CLUB COURT 1',
+        'ELSEGINY CLUB COURT 2',
+        'Panoramic Padel Super Court',
+        'Standard STX Court',
+        'Pickelball'
+    ]
     timeEnd = str(request.values.get('timeEnd'))
     dateEnd = str(request.values.get('dateEnd'))
     timeTo = str(request.values.get('timeTo'))
