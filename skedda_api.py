@@ -29,7 +29,7 @@ def book(timeFrom,timeTo,spaces,title,subDomainData,pricePerHour):
     replaceNewAtt['end'] = timeTo
     replaceNewAtt['spaces'] = spaces
     replaceNewAtt['title'] = title
-    replaceNewAtt['price'] = calculatePrice(timeFrom,timeTo,pricePerHour)
+    replaceNewAtt['price'] = calculatePrice(timeFrom,timeTo,int(pricePerHour))
     bookJson['booking'] = replaceNewAtt
 
     bookResult = session.post(bookUrl, headers=bookHeaders, cookies=bookCookies, json=bookJson)
