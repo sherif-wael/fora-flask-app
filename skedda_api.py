@@ -19,7 +19,7 @@ session = requests.session()
 
 
 
-def book(timeFrom,timeTo,spaces,title,subDomainData):
+def book(timeFrom,timeTo,spaces,title,subDomainData,pricePerHour):
     bookUrl = subDomainData['subUrl']
     bookCookies = subDomainData['subCookies']
     bookHeaders = subDomainData['subHeaders']
@@ -29,7 +29,9 @@ def book(timeFrom,timeTo,spaces,title,subDomainData):
     replaceNewAtt['end'] = timeTo
     replaceNewAtt['spaces'] = spaces
     replaceNewAtt['title'] = title
+    replaceNewAtt['price'] = calculatePrice(timeFrom,timeTo,pricePerHour)
     bookJson['booking'] = replaceNewAtt
+
     bookResult = session.post(bookUrl, headers=bookHeaders, cookies=bookCookies, json=bookJson)
     if bookResult.status_code == 200:
         data = bookResult.text
@@ -43,7 +45,20 @@ def book(timeFrom,timeTo,spaces,title,subDomainData):
         print(bookResult.text)
         return 0
         
+def calculatePrice(timeFrom,timeTo,pricePerHour):
+    xTimeFrom = timeFrom.split('T')
+    xTimeFrom = xTimeFrom[-1]
+    xTimeFrom = xTimeFrom[0:2]
+    xTimeTo = timeTo.split('T')
+    xTimeTo = xTimeTo[-1]
+    xTimeTo = xTimeTo[0:2]
     
+    print(xTimeFrom)
+    print(xTimeTo)
+    print(int(xTimeTo) - int(xTimeFrom))
+    totalPrice = (int(xTimeTo) - int(xTimeFrom)) * pricePerHour
+    return totalPrice
+
 def cancel(bookID,subDomain):
     cancelUrl = subDomain['cancelUrl']+bookID
     cancelCookies = subDomain['cancelCookies']

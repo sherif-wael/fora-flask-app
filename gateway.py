@@ -66,9 +66,10 @@ def book():
     spaces = str(request.values.get('spaces'))  
     title = str(request.values.get('title'))
     subDomain = str(request.values.get('subDomain'))
+    pricePerHour = str(request.values.get('pricePerHour'))
     subDomainData = subDomainsSessions[subDomain]
     spaces = spaces.split(',')
-    bookID = skedda.book(timeFrom,timeTo,spaces,title,subDomainData)
+    bookID = skedda.book(timeFrom,timeTo,spaces,title,subDomainData,pricePerHour)
     if bookID > 0:
         return jsonify({'BookID':bookID})
     
