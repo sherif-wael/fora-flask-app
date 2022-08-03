@@ -53,6 +53,9 @@ def calculatePrice(timeFrom,timeTo,pricePerHour):
     xTimeTo = xTimeTo[-1]
     xTimeTo = xTimeTo[0:2]
     
+    if xTimeTo == "00":
+        xTimeTo = "24"
+
     print(xTimeFrom)
     print(xTimeTo)
     print(int(xTimeTo) - int(xTimeFrom))
